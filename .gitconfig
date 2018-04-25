@@ -1,0 +1,25 @@
+[user]
+        name = J. Fritz Barnes
+        email = fritz@stonevalleypartners.com
+[credential]
+        helper = osxkeychain
+[push]
+        default = current
+[core]
+        excludesfile = /Users/fbarnes/.gitignore
+[alias]
+        co = checkout
+        br = branch
+        ci = commit
+        st = status -sb
+        last = log -1 HEAD
+        slog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+        fa = fetch -v --all --prune --recurse-submodules
+        df = diff
+        s1 = show -u -1
+        change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
